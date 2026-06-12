@@ -280,6 +280,25 @@ endef
 $(eval $(call KernelPackage,fb-tft-ili9486))
 
 
+define KernelPackage/multimedia-input
+  SUBMENU:=$(VIDEO_MENU)
+  TITLE:=Multimedia input support
+  DEPENDS:=+kmod-input-core
+  KCONFIG:=CONFIG_RC_CORE \
+	CONFIG_LIRC=y \
+	CONFIG_RC_DECODERS=y \
+	CONFIG_RC_DEVICES=y
+  FILES:=$(LINUX_DIR)/drivers/media/rc/rc-core.ko
+  AUTOLOAD:=$(call AutoProbe,rc-core)
+endef
+
+define KernelPackage/multimedia-input/description
+  Enable multimedia input.
+endef
+
+$(eval $(call KernelPackage,multimedia-input))
+
+
 define KernelPackage/drm
   SUBMENU:=$(VIDEO_MENU)
   TITLE:=Direct Rendering Manager (DRM) support
@@ -298,6 +317,7 @@ define KernelPackage/drm/description
 endef
 
 $(eval $(call KernelPackage,drm))
+
 
 define KernelPackage/drm-buddy
   SUBMENU:=$(VIDEO_MENU)
@@ -331,6 +351,7 @@ endef
 
 $(eval $(call KernelPackage,drm-display-helper))
 
+
 define KernelPackage/drm-exec
   SUBMENU:=$(VIDEO_MENU)
   HIDDEN:=1
@@ -346,6 +367,7 @@ define KernelPackage/drm-exec/description
 endef
 
 $(eval $(call KernelPackage,drm-exec))
+
 
 define KernelPackage/drm-dma-helper
   SUBMENU:=$(VIDEO_MENU)
@@ -660,6 +682,66 @@ define KernelPackage/drm-imx-ldb/description
 endef
 
 $(eval $(call KernelPackage,drm-imx-ldb))
+
+define KernelPackage/drm-lima
+  SUBMENU:=$(VIDEO_MENU)
+  TITLE:=Mali-4xx GPU support
+  DEPENDS:=@(TARGET_rockchip||TARGET_sunxi) +kmod-drm +kmod-drm-shmem-helper
+  KCONFIG:= \
+	CONFIG_DRM_VGEM \
+	CONFIG_DRM_GEM_CMA_HELPER=y \
+	CONFIG_DRM_LIMA
+  FILES:= \
+	$(LINUX_DIR)/drivers/gpu/drm/vgem/vgem.ko \
+	$(LINUX_DIR)/drivers/gpu/drm/scheduler/gpu-sched.ko \
+	$(LINUX_DIR)/drivers/gpu/drm/lima/lima.ko
+  AUTOLOAD:=$(call AutoProbe,lima vgem)
+endef
+
+define KernelPackage/drm-lima/description
+  Open-source reverse-engineered driver for Mali-4xx GPUs
+endef
+
+$(eval $(call KernelPackage,drm-lima))
+
+define KernelPackage/drm-panfrost
+  SUBMENU:=$(VIDEO_MENU)
+  TITLE:=DRM support for ARM Mali Midgard/Bifrost GPUs
+  DEPENDS:=@(TARGET_rockchip||TARGET_sunxi) +kmod-drm +kmod-drm-shmem-helper
+  KCONFIG:=CONFIG_DRM_PANFROST
+  FILES:= \
+	$(LINUX_DIR)/drivers/gpu/drm/panfrost/panfrost.ko \
+	$(LINUX_DIR)/drivers/gpu/drm/scheduler/gpu-sched.ko
+  AUTOLOAD:=$(call AutoProbe,panfrost)
+endef
+
+define KernelPackage/drm-panfrost/description
+  DRM driver for ARM Mali Midgard (T6xx, T7xx, T8xx) and
+  Bifrost (G3x, G5x, G7x) GPUs
+endef
+
+$(eval $(call KernelPackage,drm-panfrost))
+
+define KernelPackage/drm-panthor
+  SUBMENU:=$(VIDEO_MENU)
+  TITLE:=DRM support for ARM Mali CSF-based GPUs
+  DEPENDS:=@TARGET_rockchip +kmod-drm +kmod-drm-exec \
+	+kmod-drm-shmem-helper +panthor-firmware
+  KCONFIG:= \
+	CONFIG_DRM_GPUVM \
+	CONFIG_DRM_PANTHOR
+  FILES:= \
+	$(LINUX_DIR)/drivers/gpu/drm/drm_gpuvm.ko \
+	$(LINUX_DIR)/drivers/gpu/drm/panthor/panthor.ko \
+	$(LINUX_DIR)/drivers/gpu/drm/scheduler/gpu-sched.ko
+  AUTOLOAD:=$(call AutoProbe,panthor)
+endef
+
+define KernelPackage/drm-panthor/description
+  DRM driver for ARM Mali Mali (or Immortalis) Valhall Gxxx GPUs
+endef
+
+$(eval $(call KernelPackage,drm-panthor))
 
 define KernelPackage/drm-panel-mipi-dbi
   SUBMENU:=$(VIDEO_MENU)
@@ -1468,12 +1550,12 @@ define KernelPackage/video-coda
   TITLE:=i.MX VPU support
   DEPENDS:=@(TARGET_imx&&TARGET_imx_cortexa9) +kmod-video-mem2mem +kmod-video-dma-contig
   KCONFIG:= \
-  	CONFIG_VIDEO_CODA \
-  	CONFIG_VIDEO_IMX_VDOA
+	CONFIG_VIDEO_CODA \
+	CONFIG_VIDEO_IMX_VDOA
   FILES:= \
-  	$(LINUX_DIR)/drivers/media/$(V4L2_MEM2MEM_DIR)/chips-media/coda/coda-vpu.ko \
-  	$(LINUX_DIR)/drivers/media/$(V4L2_MEM2MEM_DIR)/chips-media/coda/imx-vdoa.ko \
- 	$(LINUX_DIR)/drivers/media/$(V4L2_DIR)/v4l2-jpeg.ko
+	$(LINUX_DIR)/drivers/media/$(V4L2_MEM2MEM_DIR)/chips-media/coda/coda-vpu.ko \
+	$(LINUX_DIR)/drivers/media/$(V4L2_MEM2MEM_DIR)/chips-media/coda/imx-vdoa.ko \
+	$(LINUX_DIR)/drivers/media/$(V4L2_DIR)/v4l2-jpeg.ko
   AUTOLOAD:=$(call AutoProbe,coda-vpu imx-vdoa v4l2-jpeg)
   $(call AddDepends/video)
 endef
