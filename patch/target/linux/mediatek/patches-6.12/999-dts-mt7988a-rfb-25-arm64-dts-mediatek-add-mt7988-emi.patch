@@ -9,7 +9,7 @@ v1: Add MT7988 emi to handle memory access violation
 
 --- a/arch/arm64/boot/dts/mediatek/mt7988a.dtsi
 +++ b/arch/arm64/boot/dts/mediatek/mt7988a.dtsi
-@@ -1424,6 +1424,13 @@
+@@ -1425,6 +1425,13 @@
  			reg = <0 0x1a110000 0 0x1000>;
  			interrupts = <GIC_SPI 174 IRQ_TYPE_LEVEL_HIGH>;
  		};

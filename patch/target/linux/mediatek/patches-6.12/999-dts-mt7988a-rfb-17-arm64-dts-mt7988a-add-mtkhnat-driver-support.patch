@@ -5,8 +5,8 @@ Subject: [PATCH] arm64: dts: mt7988a: add mtkhnat driver support
 
 ---
  arch/arm64/boot/dts/mediatek/mt7988a-rfb.dts | 9 +++++++++
- arch/arm64/boot/dts/mediatek/mt7988a.dtsi    | 8 ++++++++
- 2 files changed, 17 insertions(+)
+ arch/arm64/boot/dts/mediatek/mt7988a.dtsi    | 9 +++++++++
+ 2 files changed, 18 insertions(+)
 
 --- a/arch/arm64/boot/dts/mediatek/mt7988a-rfb.dts
 +++ b/arch/arm64/boot/dts/mediatek/mt7988a-rfb.dts
@@ -28,7 +28,7 @@ Subject: [PATCH] arm64: dts: mt7988a: add mtkhnat driver support
  	pinctrl-0 = <&i2c0_pins>;
 --- a/arch/arm64/boot/dts/mediatek/mt7988a.dtsi
 +++ b/arch/arm64/boot/dts/mediatek/mt7988a.dtsi
-@@ -1266,6 +1266,14 @@
+@@ -1266,6 +1266,15 @@
  			};
  		};
  
@@ -37,6 +37,7 @@ Subject: [PATCH] arm64: dts: mt7988a: add mtkhnat driver support
 +			reg = <0 0x15100000 0 0x80000>;
 +			resets = <&ethsys 0>;
 +			reset-names = "mtketh";
++			mtketh-soc = <&eth>;
 +			status = "disabled";
 +		};
 +

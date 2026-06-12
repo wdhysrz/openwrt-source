@@ -26,7 +26,7 @@ v1: Move openwrt-master files to openwrt-25.12 branch after OpenWrt official
  		};
  
  		xsphy: xs-phy@11e10000 {
-@@ -1280,6 +1282,61 @@
+@@ -1281,6 +1283,61 @@
  			status = "disabled";
  		};
  

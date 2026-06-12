@@ -10,7 +10,7 @@ v1: Add compatible, global IRQ, ethernet reference for eip197 inline mode
 
 --- a/arch/arm64/boot/dts/mediatek/mt7988a.dtsi
 +++ b/arch/arm64/boot/dts/mediatek/mt7988a.dtsi
-@@ -1405,14 +1405,17 @@
+@@ -1406,14 +1406,17 @@
  		};
  
  		crypto: crypto@15600000 {

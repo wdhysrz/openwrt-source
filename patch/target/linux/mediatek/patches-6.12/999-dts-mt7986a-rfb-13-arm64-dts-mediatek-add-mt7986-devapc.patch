@@ -9,7 +9,7 @@ v1: Add MT7986 device APC
 
 --- a/arch/arm64/boot/dts/mediatek/mt7986a.dtsi
 +++ b/arch/arm64/boot/dts/mediatek/mt7986a.dtsi
-@@ -650,6 +650,12 @@
+@@ -651,6 +651,12 @@
  				     <GIC_SPI 216 IRQ_TYPE_LEVEL_HIGH>;
  			memory-region = <&wmcpu_emi>;
  		};

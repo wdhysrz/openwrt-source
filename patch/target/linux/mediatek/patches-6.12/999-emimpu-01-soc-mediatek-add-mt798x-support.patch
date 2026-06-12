@@ -34,7 +34,7 @@ v1: Initial MT798x EMI MPU driver implementation
 +obj-$(CONFIG_MTK_EMIMPU) += mtk-emimpu.o
 --- /dev/null
 +++ b/drivers/soc/mediatek/mtk-emimpu.c
-@@ -0,0 +1,206 @@
+@@ -0,0 +1,207 @@
 +// SPDX-License-Identifier: GPL-2.0
 +/*
 + * Copyright (C) 2026 MediaTek Inc.
@@ -174,7 +174,8 @@ v1: Initial MT798x EMI MPU driver implementation
 +	{
 +		.compatible = "mediatek,mt7986-emi",
 +		.data = &emimpu_mt7986,
-+	},
++	}, {
++	}
 +};
 +MODULE_DEVICE_TABLE(of, mtk_emimpu_dt_match);
 +
