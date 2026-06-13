@@ -87,12 +87,18 @@ platform_do_upgrade() {
 	bananapi,bpi-r4-2g5|\
 	bananapi,bpi-r4-poe|\
 	bananapi,bpi-r4-lite|\
+	bazis,ax3000wm|\
 	cetron,ct3003-ubootmod|\
 	cmcc,a10-ubootmod|\
 	cmcc,rax3000m|\
 	cmcc,rax3000me|\
 	comfast,cf-wr632ax-ubootmod|\
 	cudy,tr3000-v1-ubootmod|\
+	cudy,wbr3000uax-v1-ubootmod|\
+	cudy,wr3000e-v1-ubootmod|\
+	cudy,wr3000s-v1-ubootmod|\
+	cudy,wr3000h-v1-ubootmod|\
+	cudy,wr3000p-v1-ubootmod|\
 	gatonetworks,gdsp|\
 	h3c,magic-nx30-pro|\
 	imou,hx21|\
@@ -105,12 +111,15 @@ platform_do_upgrade() {
 	mercusys,mr90x-v1-ubi|\
 	netis,nx30v2|\
 	netis,nx31|\
+	netis,nx32u|\
 	nokia,ea0326gmp|\
 	openwrt,one|\
 	netcore,n60|\
 	netcore,n60-pro|\
 	qihoo,360t7|\
 	routerich,ax3000-ubootmod|\
+	routerich,be7200|\
+	ruijie,rg-x60-new-ubi|\
 	snr,snr-cpe-ax2|\
 	tplink,tl-7dr7230-v1|\
 	tplink,tl-7dr7230-v2|\
@@ -119,36 +128,41 @@ platform_do_upgrade() {
 	tplink,tl-xdr6086|\
 	tplink,tl-xdr6088|\
 	tplink,tl-xtr8488|\
+	wirelesstag,zx7981pd-ubootmod|\
 	xiaomi,mi-router-ax3000t-ubootmod|\
 	xiaomi,redmi-router-ax6000-ubootmod|\
 	xiaomi,mi-router-wr30u-ubootmod|\
-	zyxel,ex5601-t0-ubootmod)
+	zyxel,ex5601-t0-ubootmod|\
+	zyxel,wx5600-t0-ubootmod)
 		fit_do_upgrade "$1"
 		;;
 	acer,predator-w6|\
 	acer,predator-w6d|\
 	acer,vero-w6m|\
+	airpi,ap3000m|\
 	arcadyan,mozart|\
+	clx,s20p|\
 	glinet,gl-mt2500|\
+	glinet,gl-mt2500-airoha|\
 	glinet,gl-mt6000|\
 	glinet,gl-x3000|\
 	glinet,gl-xe3000|\
 	huasifei,wh3000-emmc|\
-	huasifei,wh3000-pro|\
+	huasifei,wh3000-pro-emmc|\
+	sl,3000-emmc|\
 	smartrg,sdg-8612|\
 	smartrg,sdg-8614|\
 	smartrg,sdg-8622|\
 	smartrg,sdg-8632|\
 	smartrg,sdg-8733|\
 	smartrg,sdg-8733a|\
-	cmcc,rax3000m-emmc|\
-	cmcc,xr30-emmc|\
 	smartrg,sdg-8734)
 		CI_KERNPART="kernel"
 		CI_ROOTPART="rootfs"
 		emmc_do_upgrade "$1"
 		;;
 	asus,rt-ax52|\
+	asus,rt-ax57m|\
 	asus,rt-ax59u|\
 	asus,tuf-ax4200|\
 	asus,tuf-ax4200q|\
@@ -160,7 +174,9 @@ platform_do_upgrade() {
 		;;
 	buffalo,wsr-6000ax8|\
 	cudy,wr3000h-v1|\
-	cudy,wr3000p-v1)
+	cudy,wr3000p-v1|\
+	huasifei,wh3000-pro-nand|\
+	ruijie,rg-x30e-pro)
 		CI_UBIPART="ubi"
 		nand_do_upgrade "$1"
 		;;
@@ -173,6 +189,7 @@ platform_do_upgrade() {
 	yuncore,ax835)
 		default_do_upgrade "$1"
 		;;
+	dlink,aquila-pro-ai-e30-a1|\
 	dlink,aquila-pro-ai-m30-a1|\
 	dlink,aquila-pro-ai-m60-a1)
 		fw_setenv sw_tryactive 0
@@ -197,6 +214,7 @@ platform_do_upgrade() {
 	mercusys,mr85x|\
 	mercusys,mr90x-v1|\
 	tplink,archer-ax80-v1|\
+	tplink,archer-ax80-v1-eu|\
 	tplink,be450|\
 	tplink,re6000xd)
 		CI_UBIPART="ubi0"
@@ -281,12 +299,18 @@ platform_check_image() {
 	bananapi,bpi-r4-2g5|\
 	bananapi,bpi-r4-poe|\
 	bananapi,bpi-r4-lite|\
+	bazis,ax3000wm|\
 	cetron,ct3003-ubootmod|\
 	cmcc,a10-ubootmod|\
 	cmcc,rax3000m|\
 	cmcc,rax3000me|\
 	comfast,cf-wr632ax-ubootmod|\
 	cudy,tr3000-v1-ubootmod|\
+	cudy,wbr3000uax-v1-ubootmod|\
+	cudy,wr3000e-v1-ubootmod|\
+	cudy,wr3000s-v1-ubootmod|\
+	cudy,wr3000h-v1-ubootmod|\
+	cudy,wr3000p-v1-ubootmod|\
 	gatonetworks,gdsp|\
 	h3c,magic-nx30-pro|\
 	imou,lc-hx3001|\
@@ -298,11 +322,13 @@ platform_check_image() {
 	mediatek,mt7988a-rfb|\
 	mercusys,mr90x-v1-ubi|\
 	nokia,ea0326gmp|\
+	netis,nx32u|\
 	openwrt,one|\
 	netcore,n60|\
 	netcore,n60-pro|\
 	qihoo,360t7|\
 	routerich,ax3000-ubootmod|\
+	ruijie,rg-x60-new-ubi|\
 	tplink,tl-7dr7230-v1|\
 	tplink,tl-7dr7230-v2|\
 	tplink,tl-7dr7250-v1|\
@@ -313,6 +339,7 @@ platform_check_image() {
 	xiaomi,mi-router-ax3000t-ubootmod|\
 	xiaomi,redmi-router-ax6000-ubootmod|\
 	xiaomi,mi-router-wr30u-ubootmod|\
+	wirelesstag,zx7981pd-ubootmod|\
 	zyxel,ex5601-t0-ubootmod)
 		fit_check_image "$1"
 		return $?
@@ -344,14 +371,18 @@ platform_copy_config() {
 	acer,predator-w6|\
 	acer,predator-w6d|\
 	acer,vero-w6m|\
+	airpi,ap3000m|\
 	arcadyan,mozart|\
+	clx,s20p|\
 	glinet,gl-mt2500|\
+	glinet,gl-mt2500-airoha|\
 	glinet,gl-mt6000|\
 	glinet,gl-x3000|\
 	glinet,gl-xe3000|\
 	huasifei,wh3000-emmc|\
-	huasifei,wh3000-pro|\
+	huasifei,wh3000-pro-emmc|\
 	jdcloud,re-cp-03|\
+	sl,3000-emmc|\
 	nradio,c8-668gl|\
 	smartrg,sdg-8612|\
 	smartrg,sdg-8614|\
@@ -360,8 +391,6 @@ platform_copy_config() {
 	smartrg,sdg-8733|\
 	smartrg,sdg-8733a|\
 	smartrg,sdg-8734|\
-	cmcc,rax3000m-emmc|\
-	cmcc,xr30-emmc|\
 	ubnt,unifi-6-plus)
 		emmc_copy_config
 		;;
@@ -387,6 +416,7 @@ platform_pre_upgrade() {
 
 	case "$board" in
 	asus,rt-ax52|\
+	asus,rt-ax57m|\
 	asus,rt-ax59u|\
 	asus,tuf-ax4200|\
 	asus,tuf-ax4200q|\

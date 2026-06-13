@@ -69,15 +69,13 @@ sed -i 's/libustream-mbedtls/libustream-openssl/' include/target.mk
 
 sed -i "s/128/512/" package/base-files/files/bin/config_generate
 
-sed -i 's/ImmortalWrt-2.4G/OpenWrt-2.4G/' package/mtk/applications/mtwifi-cfg-ucode/files/lib/wifi/mtwifi.uc
+sed -i 's/ImmortalWrt-2.4G/世界和平-2.4G/' package/mtk/applications/mtwifi-cfg-ucode/files/lib/wifi/mtwifi.uc
 
-sed -i 's/ImmortalWrt-5G/OpenWrt-5G/' package/mtk/applications/mtwifi-cfg-ucode/files/lib/wifi/mtwifi.uc
+sed -i 's/ImmortalWrt-5G/世界和平G/' package/mtk/applications/mtwifi-cfg-ucode/files/lib/wifi/mtwifi.uc
 
-sed -i 's/ImmortalWrt-6G/OpenWrt-6G/' package/mtk/applications/mtwifi-cfg-ucode/files/lib/wifi/mtwifi.uc
+sed -i 's/ImmortalWrt-6G/世界和平-6G/' package/mtk/applications/mtwifi-cfg-ucode/files/lib/wifi/mtwifi.uc
 
 sed -i 's/imply KERNEL_WERROR/# imply KERNEL_WERROR/' toolchain/gcc/Config.version
 
 sed -i 's/^PKG_BUILD_PARALLEL:=1$/PKG_BUILD_PARALLEL:=1\nPKG_FORTIFY_SOURCE:=0/' package/libs/xcrypt/libxcrypt/Makefile
-
-sed -i '/cmcc,rax3000m\*/a\\tcmcc,xr30* |\\' package/mtk/applications/mtk-smp/files/smp.sh
 
